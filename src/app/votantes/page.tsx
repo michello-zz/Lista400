@@ -9,7 +9,16 @@ export default async function VotantesPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-gray-900 mb-4">Votantes</h1>
+      <div className="flex items-center justify-between mb-4">
+        <h1 className="text-2xl font-semibold text-gray-900">Votantes</h1>
+        <a
+          href="/api/votantes/exportar"
+          download
+          className="inline-flex items-center rounded-md bg-green-600 px-3 py-2 text-sm font-medium text-white hover:bg-green-700"
+        >
+          Descargar Excel
+        </a>
+      </div>
       <VotantesListado puedeEditar={puedeEditar} />
     </div>
   );
