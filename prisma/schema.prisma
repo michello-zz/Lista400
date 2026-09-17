@@ -1,0 +1,48 @@
+// Esquema de base de datos - Proyecto Lista 400
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+enum Rol {
+  ADMINISTRADOR
+  OPERADOR
+  CONSULTA
+}
+
+model Usuario {
+  id        String   @id @default(cuid())
+  nombre    String
+  correo    String   @unique
+  clave     String // hash bcrypt, nunca texto plano
+  rol       Rol      @default(CONSULTA)
+  activo    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("usuarios")
+}
+
+model Votante {
+  id            String   @id @default(cuid())
+  credencial    String   @unique
+  nombre        String
+  apellido      String
+  direccion     String?
+  telefono      String?
+  gpsLat        Float?
+  gpsLng        Float?
+  observaciones String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("votantes")
+  @@index([apellido])
+  @@index([credencial])
+}
