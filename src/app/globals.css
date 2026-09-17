@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: #f4f6fb;
+  color: #1a1d29;
+}
+
+/* Estilos del popup del ícono de credencial en el mapa */
+.icono-credencial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1f56f0;
+  color: white;
+  font-weight: 700;
+  font-size: 11px;
+  border-radius: 999px;
+  border: 2px solid white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+  padding: 2px 6px;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 10px;
+}
